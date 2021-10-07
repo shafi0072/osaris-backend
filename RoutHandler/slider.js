@@ -10,11 +10,21 @@
 const express = require('express');
 const router = express.Router();
 const sliderSchema = require('../Schemas/sliderSchema')
-const moongose = require('mongoose')
+const moongose = require('mongoose');
+const Category = new moongose.model('slider', sliderSchema);
 // route worker
 // get route
-router.get('/', (req, res) => {
-
+router.get('/',  (req, res) => {
+       Category.find((err, data) => {
+            if (err) {
+                res.status(500).json({err: "there was a server site error1"});
+            } else {
+               res.status(200).json(data)
+            }
+        })
+        
+   
+    
 });
 // get by id
 router.get('/:id', (req, res) => {
@@ -24,7 +34,7 @@ router.get('/:id', (req, res) => {
 // post route
 router.post('/', async (req, res) => {
     try{
-        const Category = new moongose.model(req.body.cat, sliderSchema);
+        
         const newCategory = new Category(req.body);
         await newCategory.save((err) => {
             if (err) {

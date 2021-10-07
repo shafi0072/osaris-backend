@@ -7,10 +7,12 @@ const sliderSchema = mongoose.Schema({
     },
     description:String,
     pricing:Number,
+    file:String,
     cat:{
         type:String,
         require: true
     },
+    link:String,
     date:{
         type: Date,
         default: Date.now,

@@ -30,9 +30,9 @@ mongoose.connect('mongodb://localhost/osaris')
 app.use('/slider', sliderRoute)
 
 // default error handler
-function errorHandler(err, req, res, next){
-    if(res.headersSent){
-        return next(err);
+function errorHandler (err, req, res, next){
+    if(req.headerSent){
+        return next(err)
     }
     res.status(500).json({error: err});
 }
