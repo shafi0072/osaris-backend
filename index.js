@@ -10,12 +10,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 // express app initilization
 const app = express();
 app.use(express.json());
 app.use(cors());
-
+app.use(express.static('./RoutHandler/public'));
 
 // Route Caller
 const sliderRoute = require('./RoutHandler/slider')
