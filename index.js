@@ -19,8 +19,8 @@ app.use(cors());
 app.use(express.static('./RoutHandler/public'));
 
 // Route Caller
-const sliderRoute = require('./RoutHandler/slider')
-
+const sliderRoute = require('./RoutHandler/slider');
+const guitar = require('./RoutHandler/guitar');
 // db Connection with mongoose
 mongoose.connect('mongodb://localhost/osaris')
         .then(() => console.log('App is connected successfully'))
@@ -28,7 +28,8 @@ mongoose.connect('mongodb://localhost/osaris')
 
 
 // application Router 
-app.use('/slider', sliderRoute)
+app.use('/slider', sliderRoute);
+app.use('/guitar', guitar);
 
 // default error handler
 function errorHandler (err, req, res, next){
