@@ -17,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static('./RoutHandler/public'));
+app.use(express.static('./helper/GuitarImages'));
 
 // Route Caller
 const sliderRoute = require('./RoutHandler/slider');

@@ -10,10 +10,6 @@ const guitarSchema = mongoose.Schema({
     imageOne:String,
     imageTwo:String,
     imageThree:String,
-    detailsImageOne:String,
-    detailsImageTwo:String,
-    detailsImageThree:String,
-    detailsImageFour:String,
     body:{
         type:String,
         require:true
@@ -83,7 +79,7 @@ const guitarSchema = mongoose.Schema({
         require: true
     },
     youtubeLink:String,
-    link:String,
+    
     date:{
         type: Date,
         default: Date.now,
