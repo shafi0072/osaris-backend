@@ -5,7 +5,6 @@
     *Email:shafi29.dev.bd@gmail.com
     *Date: 09/10/2021
 */
-
 // dependesis
 const express = require('express');
 const mongoose = require('mongoose');
@@ -101,5 +100,4 @@ route.delete('/:id', (req, res) => {
 
 // export 
 module.exports = route;
-
 
