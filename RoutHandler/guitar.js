@@ -29,6 +29,15 @@ router.get('/', (req, res) => {
             }
         })
 });
+router.get('/bass', (req, res) => {
+    bassCategory.find((err, data) => {
+         if (err) {
+             res.status(500).json({err: "there was a server site error1"});
+         } else {
+            res.status(200).json(data);
+         }
+     })
+});
 // get by id
 router.get('/:id', (req, res) => {
     guitarCategory.find({_id: req.params.id}, (err, data) => {
@@ -39,7 +48,15 @@ router.get('/:id', (req, res) => {
         }
     })
 });
-
+router.get('/bass/:id', (req, res) => {
+    bassCategory.find({_id: req.params.id}, (err, data) => {
+        if (err) {
+            res.status(500).json({err: "there was a server site error1"});
+        } else {
+           res.status(200).json(data)
+        }
+    })
+});
 // post route
 router.post('/', guitarHelper);
 
@@ -58,6 +75,20 @@ router.put('/:id', (req, res) => {
         }
     })
 });
+router.put('/bass/:id', (req, res) => {
+    bassCategory.updateOne({_id: req.params.id}, {
+         $set:req.body
+     }, (err) => {
+         if(err){
+             res.status(500).json({error: "there was a server site error"});
+         }
+         else{
+             res.status(200).json({
+                 message: "Post Was updated successfully"
+             })
+         }
+     })
+ });
 
 // Delete Route
 router.delete('/:id',  (req, res) => {
@@ -70,6 +101,16 @@ router.delete('/:id',  (req, res) => {
         }
     })
 })
+router.delete('/bass/:id',  (req, res) => {
+    bassCategory.deleteOne({_id: req.params.id}, (err) => {
+         if(err){
+             res.status(500).json({error: "failded to delete"});
+         }
+         else{
+             res.status(200).json({message: "delete successfully"});
+         }
+     })
+ })
 
 // route export
 module.exports = router;

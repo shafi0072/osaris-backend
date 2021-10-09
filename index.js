@@ -22,6 +22,8 @@ app.use(express.static('./helper/GuitarImages'));
 // Route Caller
 const sliderRoute = require('./RoutHandler/slider');
 const guitar = require('./RoutHandler/guitar');
+const category = require('./RoutHandler/category');
+
 // db Connection with mongoose
 mongoose.connect('mongodb://localhost/osaris')
         .then(() => console.log('App is connected successfully'))
@@ -31,7 +33,7 @@ mongoose.connect('mongodb://localhost/osaris')
 // application Router 
 app.use('/slider', sliderRoute);
 app.use('/guitar', guitar);
-
+app.use('/category', category);
 // default error handler
 function errorHandler (err, req, res, next){
     if(req.headerSent){
