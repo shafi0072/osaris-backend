@@ -25,7 +25,7 @@ const guitar = require('./RoutHandler/guitar');
 const category = require('./RoutHandler/category');
 
 // db Connection with mongoose
-mongoose.connect('mongodb://localhost/osaris')
+mongoose.connect('mongodb+srv://shafi:safi123456789@cluster0.dpegg.mongodb.net/osaris?retryWrites=true&w=majority')
         .then(() => console.log('App is connected successfully'))
         .catch((err) => console.log(err));
 
