@@ -46,6 +46,6 @@ function errorHandler (err, req, res, next){
 const PORT = 5000;
 
 // server start
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`the server is running on port number ${PORT}`)
 });
