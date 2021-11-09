@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const blog = mongoose.Schema({
+const blogSchema = mongoose.Schema({
     Header:{
         type:String,
         require: true,
@@ -15,4 +15,4 @@ const blog = mongoose.Schema({
     }
 });
 
-module.exports = blog;
+module.exports = blogSchema;
