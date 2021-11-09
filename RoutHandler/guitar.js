@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
         if (err) {
             res.status(500).json({err: "there was a server site error1"});
         } else {
-           res.status(200).json(data)
+           res.status(200).json(data[0])
         }
     })
 });
