@@ -8,7 +8,7 @@ const Blog = new mongoose.model('Blog', blogSchema);
 
 // post blog;
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const newBlog = new Blog(req.body);
     await newBlog.save((err) => {
         if(err) {
@@ -43,3 +43,18 @@ router.get('/', async(req, res) => {
         }
     })
 });
+
+
+router.delete('/:id', async(req, res) => {
+    Blog.deleteOne({_id: req.params.id}, (err) => {
+        if(err){
+            res.status(500).json({error: "failded to delete"});
+        }
+        else{
+            res.status(200).json({message: "delete successfully"});
+        }
+    })
+});
+
+
+module.exports = router;
