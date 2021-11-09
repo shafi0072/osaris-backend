@@ -18,12 +18,14 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('./RoutHandler/public'));
 app.use(express.static('./helper/GuitarImages'));
+app.use(express.static('./helper/Builder'));
 
 // Route Caller
 const sliderRoute = require('./RoutHandler/slider');
 const guitar = require('./RoutHandler/guitar');
 const category = require('./RoutHandler/category');
 const userdGuitar = require('./RoutHandler/useGuitar');
+const builder = require('./RoutHandler/builder');
 // db Connection with mongoose
 mongoose.connect('mongodb+srv://shafi:safi123456789@cluster0.dpegg.mongodb.net/osaris?retryWrites=true&w=majority')
         .then(() => console.log('App is connected successfully'))
@@ -35,7 +37,7 @@ app.use('/slider', sliderRoute);
 app.use('/guitar', guitar);
 app.use('/category', category);
 app.use('/usedGuitar',userdGuitar);
-
+app.use('/builder', builder)
 // default error handler
 function errorHandler (err, req, res, next){
     if(req.headerSent){
