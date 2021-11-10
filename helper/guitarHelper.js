@@ -4,6 +4,7 @@ const guitarSchema = require('../Schemas/guitarSchema');
 const moongose = require('mongoose');
 const guitarCategory = new moongose.model('guitar', guitarSchema);
 const bassCategory = new moongose.model('bass', guitarSchema);
+var fs = require('fs');
 const guitarHelper = async (req, res) => {
     // file as a variable
         const fileOne = req.files.imageOne; //fileOne
@@ -30,13 +31,12 @@ const guitarHelper = async (req, res) => {
         const strings = req.body.strings;
         const weight = req.body.weight;
         const youtubeLink = req.body.youtubeLink;
-        const imageOne = fileOne.name;
-        const imageTwo = fileTwo.name;
-        const imageThree = filethree.name;
+        
 
         const filePath1 = `${__dirname}/GuitarImages/${fileOne.name}`;
         const filePath2 = `${__dirname}/GuitarImages/${fileTwo.name}`;
         const filePath3 = `${__dirname}/GuitarImages/${filethree.name}`;
+        
         
         console.log(filethree.name)
         // file moving
@@ -65,8 +65,29 @@ const guitarHelper = async (req, res) => {
             }    
         });
         
-        console.log(`${__dirname}../RoutHandler/public`);
-        
+        function base64_encode(file) {
+            // // read binary data
+            // var bitmap = fs.readFileSync(file);
+            // // convert binary data to base64 encoded string
+            // return new Buffer(bitmap).toString('base64');
+            const imageAsBase64 = fs.readFileSync(file, 'base64');
+            return imageAsBase64;
+        }
+        const imageOne = {
+            contentType: fileOne.mimetype,
+            size:fileOne.size,
+            img:base64_encode(filePath1)
+        };
+        const imageTwo = {
+            contentType: fileTwo.mimetype,
+            size:fileTwo.size,
+            img:base64_encode(filePath2)
+        };
+        const imageThree = {
+                contentType: filethree.mimetype,
+                size:filethree.size,
+                img:base64_encode(filePath3)
+        }
         if(req.body.cat === 'guitar'){
             const newguitarCategory = new guitarCategory({
                 title,
