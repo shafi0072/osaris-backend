@@ -27,6 +27,7 @@ const category = require('./RoutHandler/category');
 const userdGuitar = require('./RoutHandler/useGuitar');
 const builder = require('./RoutHandler/builder');
 const blog = require('./RoutHandler/blog');
+
 // db Connection with mongoose
 mongoose.connect('mongodb+srv://shafi:safi123456789@cluster0.dpegg.mongodb.net/osaris?retryWrites=true&w=majority')
         .then(() => console.log('App is connected successfully'))
@@ -40,6 +41,7 @@ app.use('/category', category);
 app.use('/usedGuitar',userdGuitar);
 app.use('/builder', builder);
 app.use('/blog', blog)
+
 // default error handler
 function errorHandler (err, req, res, next){
     if(req.headerSent){

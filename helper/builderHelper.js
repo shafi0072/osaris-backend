@@ -4,13 +4,21 @@ const builderSchema = require('../Schemas/builderSchema');
 const moongose = require('mongoose');
 const builder = new moongose.model('builder', builderSchema);
 const builderHelper = (req, res) => {
-    const file = req.files.file; //fileOne
-    const bodySelecion = req.body.bodySelecion;
+    
+    const WoodSelection = req.body.WoodSelection;
     const BodyConstruction = req.body.BodyConstruction;
     const BodyShapes = req.body.BodyShapes;
     const BodyCurves = req.body.BodyCurves;
     const BodyCavities = req.body.BodyBinding;
-    const NeckSelecion = req.body.NeckSelecion;
+    const BodyBinding = req.body.BodyBinding;
+    const NeckWoodSelection = req.body.NeckWoodSelection;
+    const NeckConstruction = req.body.NeckConstruction;
+    const Headstocks = req.body.Headstocks;
+    const HeadstockAngles = req.body.HeadstockAngles;
+    const NeckTaping = req.body.NeckTaping;
+    const TrussRod = req.body.TrussRod;
+    const NeckAssembly = req.body.NeckAssembly;
+    const FreatWoodSelection = req.body.FretWoodSelection;
     const ScaleLenths = req.body.ScaleLenths;
     const FretNumbers = req.body.FretNumbers;
     const FretboardRadius = req.body.FretboardRadius;
@@ -20,71 +28,73 @@ const builderHelper = (req, res) => {
     const Fretwires = req.body.Fretwires;
     const Paint = req.body.Paint;
     const Finish = req.body.Finish;
-    const CustomShopFInish = req.body.CustomShopFInish;
+    const CustomShopFinish = req.body.CustomShopFinish;
     const TuningKeys = req.body.TuningKeys;
     const Nut = req.body.Nut;
     const Bridges = req.body.Bridges;
     const Pickups = req.body.Pickups;
     const Potentiometers = req.body.Potentiometers;
     const SelectorSwitches = req.body.SelectorSwitches;
+    const Knobs = req.body.Knobs;
     const OutputJacks = req.body.OutputJacks;
     const StrapPins = req.body.StrapPins;
     const Pickgaurds = req.body.Pickgaurds;
     const CustomGigBag = req.body.CustomGigBag;
     const CustomCase = req.body.CustomCase;
     const Strap = req.body.Strap;
-    const Picks = req.body.Picks;
-    const description = req.body.description;
-    const pricing = req.body.pricing;
+    const picks = req.body.picks;
+    const fullName = req.body.fullName;
+    const Phone = req.body.Phone;
     const email = req.body.email;
-    const filePath = `${__dirname}/Builder/${file.name}`;
-    file.mv(filePath, (err) => {
-        if(err){
-            console.log('error to upload file');
-        }
-        else{
-            console.log('file Upload successfully');
-        }    
-    });
-    const newBuilder = new guitarCategory({
-        file,
-        bodySelecion,
+    const socialId = req.body.socialId;
+    const SpecialNote = req.body.SpecialNote;
+    
+
+    const newBuilder = new builder({
+        
+        WoodSelection,
         BodyConstruction,
         BodyShapes,
         BodyCurves,
         BodyCavities,
-        NeckSelecion,
+        BodyBinding,
+        NeckWoodSelection,
+        NeckConstruction,
+        Headstocks,
+        HeadstockAngles,
+        NeckTaping,
+        TrussRod,
+        NeckAssembly,
+        FreatWoodSelection,
         ScaleLenths,
         FretNumbers,
         FretboardRadius,
-        dimensions,
-        electronics,
-        fringerboard,
-        frets,
-        hardware,
         Inlays,
         InlayMaterial,
         BodyNeckBinding,
         Fretwires,
         Paint,
         Finish,
-        CustomShopFInish,
+        CustomShopFinish,
         TuningKeys,
+        Nut,
         Bridges,
         Pickups,
         Potentiometers,
-        Nut,
         SelectorSwitches,
+        Knobs,
         OutputJacks,
         StrapPins,
         Pickgaurds,
         CustomGigBag,
         CustomCase,
         Strap,
-        Picks,
-        description,
-        pricing,
-        email
+        picks,
+        fullName,
+        Phone,
+        email,
+        socialId,
+        SpecialNote
     });
     newBuilder.save((err) => {
         if (err) {

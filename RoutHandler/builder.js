@@ -20,8 +20,8 @@ router.use(fileUpload());
 // routHandler
 // getrouters
 
-router.post((req, res) => builderHelper);
-router.get((req, res) => {
+router.post('/', builderHelper);
+router.get('/',(req, res) => {
     builder.find((err, data) => {
         if(err){
             res.status(500).json({err: "there was a server site error1"});
@@ -31,8 +31,8 @@ router.get((req, res) => {
     })
 });
 
-router.get('/:email', (req, res) => {
-    builder.find({email: req.params.email},(err, data) => {
+router.get('/:id', (req, res) => {
+    builder.find({_id: req.params.id},(err, data) => {
         if(err){
             res.status(500).json({err: "there was a server site error1"});
         }else{

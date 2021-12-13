@@ -17,7 +17,6 @@ const guitarSchema = mongoose.Schema({
     },
     imageThree:{
         type:Object,
-       
     },
     body:{
         type:String,

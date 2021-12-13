@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const builder = mongoose.Schema({
-    bodySelecion:{
+    WoodSelection:{
         type:String,
         require:true
     },
@@ -25,7 +25,35 @@ const builder = mongoose.Schema({
         type:String,
         require:true
     },
-    NeckSelecion:{
+    NeckWoodSelection:{
+        type:String,
+        require:true
+    },
+    NeckConstruction:{
+        type:String,
+        require:true
+    },
+    Headstocks:{
+        type:String,
+        require:true
+    },
+    HeadstockAngles:{
+        type:String,
+        require: true
+    },
+    NeckTaping:{
+        type:String,
+        require:true
+    },
+    TrussRod:{
+        type:String,
+        require:true
+    },
+    NeckAssembly:{
+        type:String,
+        require:true,
+    },
+    FreatWoodSelection:{
         type:String,
         require:true
     },
@@ -65,7 +93,7 @@ const builder = mongoose.Schema({
         type:String,
         require:true
     },
-    CustomShopFInish:{
+    CustomShopFinish:{
         type:String,
         require:true
     },
@@ -93,9 +121,13 @@ const builder = mongoose.Schema({
         type:String,
         require:true
     },
+    Knobs:{
+        type:String,
+        require:true 
+    },
     OutputJacks:{
         type:String,
-        require:true
+        require:true 
     },
     StrapPins:{
         type:String,
@@ -117,7 +149,15 @@ const builder = mongoose.Schema({
         type:String,
         require:true
     },
-    Picks:{
+    picks:{
+        type:String,
+        require:true
+    },
+    fullName:{
+        type:String,
+        require:true
+    },
+    Phone:{
         type:String,
         require:true
     },
@@ -125,10 +165,14 @@ const builder = mongoose.Schema({
         type:String,
         require:true
     },
-    
-    description:String,
-    pricing:Number,
-    file:String,
+    socialId:{
+        type:String,
+        require:true 
+    },
+    SpecialNote:{
+        type:String,
+        require:true
+    },
     date:{
         type: Date,
         default: Date.now,
