@@ -8,15 +8,15 @@ const guitarSchema = mongoose.Schema({
     description:String,
     pricing:Number,
     imageOne:{
-        type:Object,
+        type:String,
         
     },
     imageTwo:{
-        type:Object,
+        type:String,
         
     },
     imageThree:{
-        type:Object,
+        type:String,
     },
     body:{
         type:String,
