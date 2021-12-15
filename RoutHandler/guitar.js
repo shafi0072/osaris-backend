@@ -17,7 +17,6 @@ const fileUpload = require('express-fileupload');
 const guitarHelper = require('../helper/guitarHelper')
 // middleware
 router.use(fileUpload());
-
 // route worker
 // get route
 router.get('/', (req, res) => {

@@ -36,6 +36,8 @@ try{
             const filePath2 = `${__dirname}/GuitarImages/${fileTwo.name}`;
             const filePath3 = `${__dirname}/GuitarImages/${filethree.name}`;
             
+            // var buf = Buffer.from(fileOne.mimeType);
+            // console.log(buf);
             
             console.log(filethree)
 
