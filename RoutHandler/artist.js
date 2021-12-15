@@ -37,7 +37,21 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    res.send('success')
+    
+    artist.find((err, data) => {
+        if(err){
+            res.status(500).json({
+                error: "there was a server site error"
+            })
+
+        }
+        else{
+            res.status(200).json({
+                result: data,
+                message: "Todo Was find successfully"
+            })
+        }
+    })
 });
 
 router.delete('/:id', (req, res) => {
