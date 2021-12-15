@@ -16,6 +16,16 @@ router.post('/', (req, res) => {
     const facebook = req.body.facebook;
     const insta = req.body.insta;
     const twitter = req.body.twitter;
+    const filePath1 = `${__dirname}/public/${file.name}`;
+
+    file.mv(filePath1, (err) => {
+        if(err){
+            console.log('error to upload file');
+        }
+        else{
+            console.log('file Upload successfully1');
+        }    
+    });
 
     const newArtist = new artist({
         name,
@@ -37,7 +47,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    
+
     artist.find((err, data) => {
         if(err){
             res.status(500).json({
